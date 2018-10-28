@@ -50,10 +50,12 @@ public class connTool {
 	 */
 	public int executeUpdate(String sql,Object params []) {
 		try {
-			getConn();
+			this.getConn();
 			ps = conn.prepareStatement(sql);
-			for (int s = 0; s < params.length; s++) {
-				ps.setObject((s+1), params[s]);
+			if(params!=null) {
+				for (int s = 0; s < params.length; s++) {
+					ps.setObject((s+1), params[s]);
+				}
 			}
 			temp = ps.executeUpdate(sql);
 			ps.close();ps=null;
@@ -68,10 +70,15 @@ public class connTool {
 	
 	
 	public ResultSet executeQureen(String sql,Object params []) {
-		getConn();
+		this.getConn();
 		try {
 			ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery(sql);
+			if(params!=null) {
+				for (int s = 0; s < params.length; s++) {
+					ps.setObject((s+1), params[s]);
+				}
+			}
+			rs = ps.executeQuery(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
