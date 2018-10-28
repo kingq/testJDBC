@@ -20,7 +20,7 @@ public class BaseDao {
 	//用户名
 	private final String username="root";
 	//密码
-	private final String password="123";
+	private final String password="123456";
 	
 	//JDBC的连接对象
 	private Connection con=null;
@@ -115,5 +115,6 @@ public class BaseDao {
 				e.printStackTrace();
 			}   
 	}
+
 
 }
